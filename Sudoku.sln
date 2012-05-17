@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver", "SudokuSolver\SudokuSolver.csproj", "{DE0B0244-D52F-44AC-9341-D1307E4727BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuEnumerator", "SudokuSolver\SudokuEnumerator.csproj", "{DE0B0244-D52F-44AC-9341-D1307E4727BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +13,9 @@ Global
 		{DE0B0244-D52F-44AC-9341-D1307E4727BC}.Debug|x86.Build.0 = Debug|x86
 		{DE0B0244-D52F-44AC-9341-D1307E4727BC}.Release|x86.ActiveCfg = Release|x86
 		{DE0B0244-D52F-44AC-9341-D1307E4727BC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = SudokuSolver\SudokuEnumerator.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
