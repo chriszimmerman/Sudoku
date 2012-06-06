@@ -10,6 +10,7 @@ namespace SudokuEnumerator
     {
         private int xCoordinate;
         private int yCoordinate;
+		private int blockNumber;
         private int number;
 
         public int XCoordinate
@@ -23,29 +24,31 @@ namespace SudokuEnumerator
             get { return yCoordinate; }
             set { yCoordinate = value; }
         }
+		
+		public int BlockNumber
+		{
+			get { return blockNumber; }
+			set { blockNumber = value; }
+		}
+		
         public int Number
         {
             get { return number; }
             set { number = value; }
         }
 
-        public Square(int xCoordinate, int yCoordinate)
+		public Square():this(0,0,0,0){}
+        public Square(int xCoordinate, int yCoordinate, int blockNumber, int number)
         {
             XCoordinate = xCoordinate;
             YCoordinate = yCoordinate;
-            Number = 0; 
-        }
-
-        public Square(int xCoordinate, int yCoordinate, int number)
-        {
-            XCoordinate = xCoordinate;
-            YCoordinate = yCoordinate;
+			BlockNumber = blockNumber;
             Number = number;
         }
 
-        public void printSquareInfo()
+        public void PrintSquareInfo()
         {
-            Debug.Write("X: " + XCoordinate + "\tY: " + YCoordinate + "\tValue: " + Number + "\tPoopballs\n");
-        }
+            Console.WriteLine("X: " + XCoordinate + "\tY: " + YCoordinate + "\tBlock: " + BlockNumber + "\tValue: " + Number + "\n");
+		}
     }
 }

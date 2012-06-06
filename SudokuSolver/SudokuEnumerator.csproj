@@ -36,6 +36,7 @@
     <Compile Include="Driver.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="SudokuSet.cs" />
+    <Compile Include="SudokuEnumerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

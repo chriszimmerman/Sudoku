@@ -9,11 +9,12 @@ namespace SudokuEnumerator
     {
         public static void Main(String[] args)
         {
-            Square square = new Square(1,2,3);
-            square.printSquareInfo();
+            //Square square = new Square(1,2,3, 0);
+            //square.PrintSquareInfo();
 
-            SudokuSet grid = new SudokuSet(2);
-            grid.printGrid();
+            SudokuEnumerator grid = new SudokuEnumerator(3);
+			
+			grid.InitializeSquaresToTry();
             return;
         }
     }
