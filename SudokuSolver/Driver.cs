@@ -15,6 +15,9 @@ namespace SudokuEnumerator
             SudokuEnumerator grid = new SudokuEnumerator(3);
 			
 			grid.InitializeSquaresToTry();
+			grid.Enumerate();
+			grid.PrintGrid();
+			
             return;
         }
     }
