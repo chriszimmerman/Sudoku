@@ -12,7 +12,7 @@ namespace SudokuEnumerator
             //Square square = new Square(1,2,3, 0);
             //square.PrintSquareInfo();
 
-            SudokuEnumerator grid = new SudokuEnumerator(3);
+            SudokuEnumerator grid = new SudokuEnumerator(2);
 			
 			grid.InitializeSquaresToTry();
 			grid.Enumerate();
