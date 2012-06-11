@@ -27,11 +27,15 @@ namespace SudokuEnumerator
 					var newSquare = new Square();
 					newSquare.XCoordinate = column;
 					newSquare.YCoordinate = row;
-					newSquare.BlockNumber = ((int)(row / (gridSizeSqrt + 1))) * gridSizeSqrt 
-										  + (int)(column / (gridSizeSqrt + 1)) + 1;
+					newSquare.BlockNumber = ((int)Math.Floor((double)row / (double)(gridSizeSqrt + 1)) * gridSizeSqrt)
+										  + (int)Math.Ceiling((double)column / (double)(gridSizeSqrt));
 					newSquare.Number = 1;
 					SquaresToTry.Add(newSquare);
 				}
+			}
+			
+			foreach(var square in SquaresToTry){
+				square.PrintSquareInfo();	
 			}
 		}
 		
@@ -44,6 +48,7 @@ namespace SudokuEnumerator
 				if(takeFromStack){
 					SquaresToTry.Add(current);
 					current = SquaresFiguredOut.Pop();
+					current.Number += 1;
 				}
 				else{
 					current = SquaresToTry.OrderBy(x => random.Next()).Take(1).First();	
@@ -62,7 +67,7 @@ namespace SudokuEnumerator
 					return true;
 				}
 			}
-			current.Number = 1;
+			current.Number = (current.Number + 1) % gridSize;
 			return false;
 		}
 		
