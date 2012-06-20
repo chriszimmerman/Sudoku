@@ -11,43 +11,44 @@ namespace SudokuEnumerator
         private int xCoordinate;
         private int yCoordinate;
 		private int blockNumber;
-        private int number;
+        private int? number;
+		private List<int> possibleValues;
 
-        public int XCoordinate
-        {
+        public int XCoordinate {
             get { return xCoordinate; }
             set { xCoordinate = value; }
         }
 
-        public int YCoordinate
-        {
+        public int YCoordinate {
             get { return yCoordinate; }
             set { yCoordinate = value; }
         }
 		
-		public int BlockNumber
-		{
+		public int BlockNumber {
 			get { return blockNumber; }
 			set { blockNumber = value; }
 		}
 		
-        public int Number
-        {
+        public int? Number {
             get { return number; }
             set { number = value; }
         }
+		
+		public List<int> PossibleValues {
+			get { return possibleValues; }
+			set { possibleValues = value; }
+		}
 
-		public Square():this(0,0,0,0){}
-        public Square(int xCoordinate, int yCoordinate, int blockNumber, int number)
-        {
+		public Square():this(0,0,0,null){possibleValues = new List<int>();}
+        public Square(int xCoordinate, int yCoordinate, int blockNumber, int? number) {
             XCoordinate = xCoordinate;
             YCoordinate = yCoordinate;
 			BlockNumber = blockNumber;
             Number = number;
+			possibleValues = new List<int>();
         }
 
-        public void PrintSquareInfo()
-        {
+        public void PrintSquareInfo() {
             Console.WriteLine("X: " + XCoordinate + "\tY: " + YCoordinate + "\tBlock: " + BlockNumber + "\tValue: " + Number + "\n");
 		}
     }
