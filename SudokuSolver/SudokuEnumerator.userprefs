@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="SudokuEnumerator.cs">
     <Files>
-      <File FileName="Driver.cs" Line="6" Column="26" />
-      <File FileName="Square.cs" Line="7" Column="11" />
-      <File FileName="SudokuEnumerator.cs" Line="4" Column="1" />
+      <File FileName="Driver.cs" Line="15" Column="3" />
+      <File FileName="Square.cs" Line="51" Column="40" />
+      <File FileName="SudokuEnumerator.cs" Line="27" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -8,10 +8,10 @@ namespace SudokuEnumerator
 	{
 		int gridSize;
 		int gridSizeSqrt;
+		List<int> possibleValues;
 		List<Square> SquaresToTry;
 		Stack<Square> SquaresFiguredOut;
 		Stack<Square> BacktrackStack;
-		List<int> possibleValues;
 		
 		public SudokuEnumerator(int gridSize) {
 			this.gridSizeSqrt = gridSize;
@@ -25,31 +25,36 @@ namespace SudokuEnumerator
 			}
 		}
 		
+		public void CreateSudoku() {
+			InitializeSquaresToTry();
+		}
+		
 		public void InitializeSquaresToTry() {
 			for(int row = 1; row <= gridSize; row++) {
 				for(int column = 1; column <= gridSize; column++) {
 					var newSquare = new Square();
 					newSquare.XCoordinate = column;
 					newSquare.YCoordinate = row;
-					newSquare.BlockNumber = ((int)Math.Floor((double)(row - 1) / (double)(gridSizeSqrt)) * gridSizeSqrt)
-										  + (int)Math.Ceiling((double)column / (double)(gridSizeSqrt));
+					newSquare.BlockNumber = GetBlockNumber(column, row);
 					newSquare.PossibleValues = new List<int>(possibleValues);
 					SquaresToTry.Add(newSquare);
 				}
 			}
 			
-			foreach(var square in SquaresToTry) {
-				square.PrintSquareInfo();	
-			}
+			Enumerate();
+		}
+		
+		private int GetBlockNumber(int column, int row) {
+			return ((int)Math.Floor((double)(row - 1) / (double)(gridSizeSqrt)) * gridSizeSqrt)
+			      + (int)Math.Ceiling((double)column / (double)(gridSizeSqrt));
 		}
 		
 		public void Enumerate() {
 			Square current = new Square();
-			bool takeFromFiguredOut = false;
+			bool takeFromSquaresFiguredOut = false;
 			
 			while(SquaresToTry.Count > 0 || BacktrackStack.Count > 0) {	
-				Console.WriteLine(SquaresToTry.Count() + " " + BacktrackStack.Count() + " " + SquaresFiguredOut.Count());
-				if(takeFromFiguredOut){
+				if(takeFromSquaresFiguredOut){
 					current = SquaresFiguredOut.Pop();
 				}
 				else {
@@ -65,14 +70,15 @@ namespace SudokuEnumerator
 					
 				if(IsValidValueFoundForSquare(current)){
 					SquaresFiguredOut.Push(current);
-					takeFromFiguredOut = false;
+					takeFromSquaresFiguredOut = false;
 				}
 				else {
 					BacktrackStack.Push(current);
-					takeFromFiguredOut = true;
+					takeFromSquaresFiguredOut = true;
 				}
 				RefreshPossibleValues();
 			}
+			PrintGrid();
 		}
 				
 		private bool IsValidValueFoundForSquare(Square current){
@@ -126,7 +132,7 @@ namespace SudokuEnumerator
 			
 			foreach(var square in SquaresFiguredOut.OrderBy(y => y.YCoordinate).ThenBy(x => x.XCoordinate)){
 				Console.Write(square.Number + " ");
-				if((i+1)%gridSize == 0) Console.WriteLine();
+				if((i+1) % gridSize == 0) Console.WriteLine();
 				i++;
 			}
 		}
