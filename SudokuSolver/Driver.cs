@@ -9,9 +9,13 @@ namespace SudokuEnumerator
     {
         public static void Main(String[] args)
         {
-            SudokuEnumerator grid = new SudokuEnumerator(3);
-			grid.CreateSudoku();
-            return;
+            SudokuEnumerator grid = new SudokuEnumerator(2);
+			//grid.PrintGrid(grid.ConvertToArray());
+			//grid.PrintGrid(grid.MakePartialSolution(Difficulty.Hard));
+			grid.SolvePartialSolution();
+			
+			grid.PrintGrid(grid.ConvertToArray());
+			return;
         }
     }
 }

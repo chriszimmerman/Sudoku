@@ -37,6 +37,7 @@
     <Compile Include="Square.cs" />
     <Compile Include="SudokuSet.cs" />
     <Compile Include="SudokuEnumerator.cs" />
+    <Compile Include="Difficulty.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
