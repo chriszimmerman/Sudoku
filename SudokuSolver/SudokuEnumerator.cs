@@ -212,29 +212,24 @@ namespace SudokuEnumerator
 			var digits = input.Split(' ');
 			int length = (int)Math.Sqrt(digits.Length);
 			
-			int col = 1;
-			int row = 1;
-			
-			foreach(var digit in digits){
-				var square = new Square();
-				square.XCoordinate = col;
-				square.YCoordinate = row;
-				square.BlockNumber = GetBlockNumber(col, row);
-				
-				if(digit != "_"){
-					square.Number = Convert.ToInt32(digit);
-					PartialSolution.Push(square);
-				}
-				else{
-					SquaresToTry.Add(square);	
-				}
-				
-				col++;
-				if(col > length){
-					row++;
-					col = 1;
-				}
-			}
+            for (int row = 1; row <= length; row++) {
+                for(int col = 1; col <= length; col++) {
+                    var square = new Square();
+                    square.XCoordinate = col;
+                    square.YCoordinate = row;
+                    square.BlockNumber = GetBlockNumber(col, row);
+
+                    if (digits[(row - 1) * length + col - 1] != "_")
+                    {
+                        square.Number = Convert.ToInt32(digits[(row - 1) * length + col - 1]);
+                        PartialSolution.Push(square);
+                    }
+                    else
+                    {
+                        SquaresToTry.Add(square);
+                    }
+                }    
+            }
 			RefreshPossibleValues();
 			Enumerate();
 		}
