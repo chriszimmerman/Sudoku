@@ -1,30 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace SudokuEnumerator
 {
 	public class SudokuEnumerator
 	{
-		int gridSize;
-		int gridSizeSqrt;
-		List<int> possibleValues;
+		int gridLength;
+		int gridLengthSqrt;
+		List<int> PossibleValues;
 		List<Square> SquaresToTry;
 		Stack<Square> SquaresFiguredOut;
 		Stack<Square> BacktrackStack;
 		Stack<Square> PartialSolution;
 		
-		public SudokuEnumerator(int gridSize = 3) {
-			this.gridSizeSqrt = gridSize;
-			this.gridSize = gridSize * gridSize;
+		public SudokuEnumerator(int gridLengthSqrt = 3) {
+			this.gridLengthSqrt = gridLengthSqrt;
+			this.gridLength = gridLengthSqrt * gridLengthSqrt;
 			this.SquaresToTry = new List<Square>();
 			this.SquaresFiguredOut = new Stack<Square>();
 			this.BacktrackStack = new Stack<Square>();
 			this.PartialSolution = new Stack<Square>();
-			this.possibleValues = new List<int>();
+			this.PossibleValues = new List<int>();
 			
-			for(int i = 1; i <= this.gridSize; i++){
-				possibleValues.Add(i);
+			for(int i = 1; i <= this.gridLength; i++){
+				PossibleValues.Add(i);
 			}
 			
 			InitializeSquaresToTry();
@@ -32,21 +33,21 @@ namespace SudokuEnumerator
 		}
 		
 		private void InitializeSquaresToTry() {
-			for(int row = 1; row <= gridSize; row++) {
-				for(int column = 1; column <= gridSize; column++) {
+			for(int row = 1; row <= gridLength; row++) {
+				for(int column = 1; column <= gridLength; column++) {
 					var newSquare = new Square();
 					newSquare.XCoordinate = column;
 					newSquare.YCoordinate = row;
 					newSquare.BlockNumber = GetBlockNumber(column, row);
-					newSquare.PossibleValues = new List<int>(possibleValues);
+					newSquare.PossibleValues = new List<int>(PossibleValues);
 					SquaresToTry.Add(newSquare);
 				}
 			}
 		}
 		
 		private int GetBlockNumber(int column, int row) {
-			return ((int)Math.Floor((double)(row - 1) / (double)(gridSizeSqrt)) * gridSizeSqrt)
-			      + (int)Math.Ceiling((double)column / (double)(gridSizeSqrt));
+			return ((int)Math.Floor((double)(row - 1) / (double)(gridLengthSqrt)) * gridLengthSqrt)
+			      + (int)Math.Ceiling((double)column / (double)(gridLengthSqrt));
 		}
 		
 		private void Enumerate() {
@@ -126,7 +127,7 @@ namespace SudokuEnumerator
 		
 		private void RefreshSquare(Square current){
 			current.PossibleValues = new List<int>();
-			foreach(var possibleValue in possibleValues){
+			foreach(var possibleValue in PossibleValues){
 				current.Number = possibleValue;
 				if(!DoesSquareInSameZoneShareValue(current)){
 					current.PossibleValues.Add(possibleValue);	
@@ -136,7 +137,7 @@ namespace SudokuEnumerator
 		}
 		
 		public int?[,] ConvertToArray(){
-			int?[,] grid = new int?[gridSize, gridSize];
+			int?[,] grid = new int?[gridLength, gridLength];
 			foreach(var square in SquaresFiguredOut){
 				grid[square.XCoordinate-1, square.YCoordinate-1] = square.Number;
 			}
@@ -148,31 +149,31 @@ namespace SudokuEnumerator
 		
 		public int?[,] MakePartialSolution(Difficulty difficulty){
 			int hintsToTakeAway;
-			Random random = new Random();
+			int totalSquares = gridLength * gridLength;
 			
 			switch(difficulty){
 				case Difficulty.Easy:
-					hintsToTakeAway = 45;
+					hintsToTakeAway = totalSquares / 2;
 					break;
 				case Difficulty.Medium:
-					hintsToTakeAway = 54;
+					hintsToTakeAway = totalSquares / 3;
 					break;
 				case Difficulty.Hard:
-					hintsToTakeAway = 12;
+					hintsToTakeAway = totalSquares / 4;
 					break;
 				default:
 					hintsToTakeAway = 0;
 					break;
 			}
 			
+			Random random = new Random();
 			var solutionSquares = new List<Square>(SquaresFiguredOut);
-			
 			var squaresToClear = solutionSquares.OrderBy(x => random.Next()).Take(hintsToTakeAway);
 			foreach(var square in squaresToClear){
 				square.Number = null;
 			}
 			
-			int? [,] partialSolution = new int?[gridSize, gridSize];
+			int? [,] partialSolution = new int?[gridLength, gridLength];
 			foreach(var square in solutionSquares){
 				if(square.Number != null)
 					partialSolution[square.XCoordinate-1, square.YCoordinate-1] = square.Number;	
@@ -182,8 +183,8 @@ namespace SudokuEnumerator
 		}
 		
 		public void PrintGrid(int?[,] grid){				
-			for(int row = 0; row < gridSize; row++){
-				for(int column = 0; column < gridSize; column++){
+			for(int row = 0; row < gridLength; row++){
+				for(int column = 0; column < gridLength; column++){
 					if(grid[column, row] != null)
 						Console.Write(grid[column, row] + " ");
 					else
@@ -193,24 +194,14 @@ namespace SudokuEnumerator
 			}
 		}
 		
-		public void SolvePartialSolution(){
-			
+		public void SolvePartialSolution(string filename){
 			SquaresFiguredOut = new Stack<Square>();
 			SquaresToTry = new List<Square>();
 			PartialSolution = new Stack<Square>();
 			BacktrackStack = new Stack<Square>();
-			string input = "_ 5 2 _ _ _ 9 _ 1 " +
-				   		   "9 _ _ _ _ _ 5 8 _ " +
-						   "3 _ _ _ 1 _ _ _ _ " +
-						   "_ _ _ _ 3 7 _ 5 9 " +
-						   "_ _ 9 4 _ _ _ _ _ " +
-						   "_ _ _ 9 _ _ 6 2 _ " +
-						   "8 6 _ _ _ 3 _ _ _ " +
-						   "_ 9 _ 7 _ 8 _ 4 _ " +
-						   "4 _ _ 2 _ _ _ _ 8";
 			
-			var digits = input.Split(' ');
-			int length = (int)Math.Sqrt(digits.Length);
+			var digits = ParseFile(filename);
+			int length = (int)Math.Sqrt(digits.Count);
 			
 			int col = 1;
 			int row = 1;
@@ -237,6 +228,11 @@ namespace SudokuEnumerator
 			}
 			RefreshPossibleValues();
 			Enumerate();
+		}
+		
+		private List<string> ParseFile(string filename){
+			var squares = File.ReadAllText(filename).ToString().Split(' ', '\n').ToList();
+			return squares.Take(squares.Count-1).ToList();
 		}
 	}
 }

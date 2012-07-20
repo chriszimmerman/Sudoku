@@ -12,7 +12,9 @@ namespace SudokuEnumerator
             SudokuEnumerator grid = new SudokuEnumerator(2);
 			//grid.PrintGrid(grid.ConvertToArray());
 			//grid.PrintGrid(grid.MakePartialSolution(Difficulty.Hard));
-			grid.SolvePartialSolution();
+			//grid.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test.txt");
+			grid.PrintGrid(grid.ConvertToArray());
+			grid.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test2.txt");
 			
 			grid.PrintGrid(grid.ConvertToArray());
 			return;

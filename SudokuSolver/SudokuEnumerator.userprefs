@@ -1,15 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SudokuEnumerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Square.cs">
     <Files>
       <File FileName="Driver.cs" Line="7" Column="2" />
-      <File FileName="Square.cs" Line="51" Column="40" />
-      <File FileName="SudokuEnumerator.cs" Line="209" Column="32" />
+      <File FileName="Square.cs" Line="19" Column="1" />
+      <File FileName="SudokuEnumerator.cs" Line="237" Column="60" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/chris/code/Sudoku/SudokuSolver/SudokuEnumerator.cs" line="213" />
+      <Breakpoint file="/home/chris/code/Sudoku/SudokuSolver/SudokuEnumerator.cs" line="214" />
+      <Breakpoint file="/home/chris/code/Sudoku/SudokuSolver/SudokuEnumerator.cs" line="237" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
