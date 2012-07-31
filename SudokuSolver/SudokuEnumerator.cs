@@ -24,12 +24,16 @@ namespace SudokuEnumerator
 			this.PartialSolution = new Stack<Square>();
 			this.PossibleValues = new List<int>();
 			
-			for(int i = 1; i <= this.gridLength; i++){
-				PossibleValues.Add(i);
-			}
-			
+			GeneratePossibleValues(this.gridLength);
 			InitializeSquaresToTry();
 			Enumerate();
+		}
+		
+		private void GeneratePossibleValues(int maxNumber)
+		{
+			for(int i = 1; i <= maxNumber; i++){
+				PossibleValues.Add(i);
+			}
 		}
 		
 		private void InitializeSquaresToTry() {
