@@ -35,9 +35,11 @@
   <ItemGroup>
     <Compile Include="Driver.cs" />
     <Compile Include="Square.cs" />
-    <Compile Include="SudokuSet.cs" />
     <Compile Include="SudokuEnumerator.cs" />
     <Compile Include="Difficulty.cs" />
+    <Compile Include="SudokuPuzzle.cs" />
+    <Compile Include="PuzzleGenerator.cs" />
+    <Compile Include="PuzzleSolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

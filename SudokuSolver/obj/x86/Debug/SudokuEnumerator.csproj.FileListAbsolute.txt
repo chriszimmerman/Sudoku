@@ -1,0 +1,2 @@
+C:\Users\Zimmy\devcode\SudokuSolver\obj\x86\Debug\SudokuSolver.exe
+C:\Users\Zimmy\devcode\SudokuSolver\obj\x86\Debug\SudokuSolver.pdb

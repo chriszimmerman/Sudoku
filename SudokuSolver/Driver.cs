@@ -9,14 +9,23 @@ namespace SudokuEnumerator
     {
         public static void Main(String[] args)
         {
-            SudokuEnumerator grid = new SudokuEnumerator(3);
-			//grid.PrintGrid(grid.ConvertToArray());
-			//grid.PrintGrid(grid.MakePartialSolution(Difficulty.Hard));
-			//grid.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test.txt");
-			grid.PrintGrid(grid.ConvertToArray());
-			grid.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test2.txt");
+			/*PuzzleGenerator p = new PuzzleGenerator(2);
+			p.MakePartialSolution(Difficulty.Easy);
+			p.PrintGrid(p.ConvertToArray());
+			*/
+			SudokuEnumerator s = new SudokuEnumerator(2);
+			s.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test2.txt");
+			s.PrintGrid(s.ConvertToArray());
 			
-			grid.PrintGrid(grid.ConvertToArray());
+			PuzzleSolver q = new PuzzleSolver();
+			q.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test.txt");
+			q.PrintGrid(q.ConvertToArray());
+			
+			//grid.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test.txt");
+			//grid.PrintGrid(grid.ConvertToArray());
+			//grid.SolvePartialSolution("/home/chris/code/Sudoku/SudokuSolver/bin/Debug/test2.txt");
+			
+			//grid.PrintGrid(grid.ConvertToArray());
 			return;
         }
     }
