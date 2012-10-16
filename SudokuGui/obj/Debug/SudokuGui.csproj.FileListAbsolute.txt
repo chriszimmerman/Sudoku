@@ -1,0 +1,13 @@
+C:\Users\Zimmy\devcode\SudokuGui\bin\Debug\SudokuGui.exe.config
+C:\Users\Zimmy\devcode\SudokuGui\bin\Debug\SudokuGui.exe
+C:\Users\Zimmy\devcode\SudokuGui\bin\Debug\SudokuGui.pdb
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui.csprojResolveAssemblyReference.cache
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\MainWindow.baml
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\MainWindow.g.cs
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\App.g.cs
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui_MarkupCompile.cache
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui.g.resources
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui.Properties.Resources.resources
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui.csproj.GenerateResource.Cache
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui.exe
+C:\Users\Zimmy\devcode\SudokuGui\obj\Debug\SudokuGui.pdb
