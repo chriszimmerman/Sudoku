@@ -17,9 +17,9 @@ namespace Sudoku {
   public partial class MainWindow : Window {
     Grid grid;
     string imagePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Images\\";
+    string puzzlePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Puzzles\\";
 
     public MainWindow() {
-      grid = GenerateGrid(9);
       AddChild(grid);
       InitializeComponent();
     }
@@ -27,7 +27,12 @@ namespace Sudoku {
     private Grid GenerateGrid(int size) {
       PuzzleGenerator p = new PuzzleGenerator((int)Math.Sqrt(size));
       p.MakePartialSolution(Difficulty.Medium);
-      var gridNumbers = p.ConvertToArray();
+      PuzzleSolver solution = new PuzzleSolver();
+      //solution.SolvePartialSolution(puzzlePath + "test.txt");
+
+      //var gridNumbers = p.ConvertToArray();
+      solution.SolvePartialSolution(puzzlePath + "test2.txt");
+      var gridNumbers = solution.ConvertToArray();
 
       grid = new Grid();
 
@@ -50,7 +55,7 @@ namespace Sudoku {
           panel.MouseDown += PanelClick;
           panel.Row = row;
           panel.Column = column;
-          panel.Number = gridNumbers[row, column];
+          panel.Number = gridNumbers[column, row];
           panel.IsLocked = panel.Number != null;
 
 
@@ -71,6 +76,7 @@ namespace Sudoku {
     private void StartButtonClick(object sender, RoutedEventArgs e) {
       startButton.Visibility = Visibility.Hidden;
       startButton.IsEnabled = false;
+      gamePanel.Children.Clear();
       gamePanel.Children.Add(GenerateGrid(9));
     }
 
@@ -83,7 +89,17 @@ namespace Sudoku {
         var imageBrush2 = new ImageBrush();
         imageBrush2.ImageSource = image2;
         newPanel.Background = imageBrush2;
+
+        var choicePanel = new StackPanel();
+        choicePanel.Height = 90;
+        choicePanel.Width = 90;
+        choicePanel.Background = imageBrush2;
+        
       }
+    }
+
+    public void Close(object sender, RoutedEventArgs e) {
+      Environment.Exit(0);
     }
   }
 }

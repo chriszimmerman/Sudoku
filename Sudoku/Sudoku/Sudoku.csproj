@@ -56,8 +56,6 @@
     <Compile Include="PuzzleGenerator.cs" />
     <Compile Include="PuzzleSolver.cs" />
     <Compile Include="Square.cs" />
-    <Compile Include="SudokuEnumerator.cs" />
-    <Compile Include="SudokuGenerator.cs" />
     <Compile Include="SudokuPanel.cs" />
     <Compile Include="SudokuPuzzle.cs" />
     <Page Include="MainWindow.xaml">
@@ -122,6 +120,12 @@
     <Resource Include="Images\sudoku_soft7.png" />
     <Resource Include="Images\sudoku_soft8.png" />
     <Resource Include="Images\sudoku_soft9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Puzzles\test.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Puzzles\test2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

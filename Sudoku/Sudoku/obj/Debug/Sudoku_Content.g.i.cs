@@ -8,24 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard4.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard5.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard6.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard7.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard8.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard9.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_hard_.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft4.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft5.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft6.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft7.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft8.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft9.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("puzzles/test2.txt")]
 
 

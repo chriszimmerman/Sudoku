@@ -47,7 +47,7 @@ namespace Sudoku {
     }
 
     private List<string> ParseFile(string filename) {
-      var squares = File.ReadAllText(filename).ToString().Split(' ', '\n').ToList();
+      var squares = File.ReadAllText(filename).ToString().Replace("\r", "").Split('\n', ' ').ToList();
       return squares.Take(squares.Count - 1).ToList();
     }
 
