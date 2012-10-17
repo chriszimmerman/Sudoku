@@ -1,0 +1,13 @@
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\Sudo.csprojResolveAssemblyReference.cache
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\MainWindow.baml
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\MainWindow.g.cs
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\App.g.cs
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui_MarkupCompile.cache
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui.g.resources
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui.Properties.Resources.resources
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\Sudo.csproj.GenerateResource.Cache
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui.exe
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui.pdb
+C:\Users\Zimmy\devcode\TestGui\TestGui\bin\Debug\TestGui.exe.config
+C:\Users\Zimmy\devcode\TestGui\TestGui\bin\Debug\TestGui.exe
+C:\Users\Zimmy\devcode\TestGui\TestGui\bin\Debug\TestGui.pdb

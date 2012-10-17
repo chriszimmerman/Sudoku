@@ -1,0 +1,29 @@
+c:\users\zimmy\documents\visual studio 2012\Projects\TestGui\TestGui\bin\Debug\TestGui.exe.config
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\bin\Debug\TestGui.exe
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\bin\Debug\TestGui.pdb
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\MainWindow.baml
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\MainWindow.g.cs
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\App.g.cs
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui_MarkupCompile.cache
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui.g.resources
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui.Properties.Resources.resources
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui.csproj.GenerateResource.Cache
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui.exe
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui.pdb
+c:\Users\Zimmy\Documents\Visual Studio 2012\Projects\TestGui\TestGui\obj\Debug\TestGui.csprojResolveAssemblyReference.cache
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\bin\Debug\TestGui.exe.config
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui.exe
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui.pdb
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\bin\Debug\TestGui.exe
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\bin\Debug\TestGui.pdb
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui.csprojResolveAssemblyReference.cache
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\MainWindow.baml
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\MainWindow.g.cs
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\App.g.cs
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui_MarkupCompile.cache
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui.g.resources
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui.Properties.Resources.resources
+C:\Users\IBM_ADMIN\Desktop\TestGui\TestGui\obj\Debug\TestGui.csproj.GenerateResource.Cache
+C:\Users\Zimmy\devcode\TestGui\TestGui\bin\Debug\TestGui.exe.config
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui.exe
+C:\Users\Zimmy\devcode\TestGui\TestGui\obj\Debug\TestGui.pdb
