@@ -6,12 +6,14 @@
         <StackPanel Name="gamePanel" HorizontalAlignment="Left" Height="270" VerticalAlignment="Top" Width="270" Margin="128,81,0,0">
             <!--"<Border BorderBrush="Black" BorderThickness="1" Width="270" Height="270"/> -->
         </StackPanel>
-        <Button Name="startButton" Content="Start Game" HorizontalAlignment="Left" Margin="150,373,0,0" VerticalAlignment="Top" Width="232" Height="50" FontSize="18" Click="StartButtonClick"/>
+        <Button Name="startButton" Content="Start Game" HorizontalAlignment="Left" Margin="150,356,0,0" VerticalAlignment="Top" Width="232" Height="50" FontSize="18" Click="StartButtonClick"/>
         <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="517">
             <MenuItem Header="Game">
-                <MenuItem Header="New" HorizontalAlignment="Left" Width="145" Click="StartButtonClick"/>
+                <MenuItem Header="New" HorizontalAlignment="Left" Width="200" Click="StartButtonClick"/>
+                <MenuItem Header="Solve" HorizontalAlignment="Left" Width="200" Click="SolveButtonClick"/>
                 <MenuItem Header="Exit" HorizontalAlignment="Left" Width="145" InputGestureText="Alt+F4" Click="Close"/>
             </MenuItem>
         </Menu>
+        <Button x:Name="solveButton" Content="Solve Puzzle" HorizontalAlignment="Left" Margin="150,411,0,0" VerticalAlignment="Top" Width="232" Height="50" FontSize="18" Click="SolveButtonClick"/>
     </Grid>
 </Window>
