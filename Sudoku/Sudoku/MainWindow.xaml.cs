@@ -24,15 +24,7 @@ namespace Sudoku {
       InitializeComponent();
     }
 
-    private Grid GenerateGrid(int size) {
-      PuzzleGenerator p = new PuzzleGenerator((int)Math.Sqrt(size));
-      p.MakePartialSolution(Difficulty.Medium);
-      PuzzleSolver solution = new PuzzleSolver();
-      //solution.SolvePartialSolution(puzzlePath + "test.txt");
-
-      //var gridNumbers = p.ConvertToArray();
-      solution.SolvePartialSolution(puzzlePath + "test2.txt");
-      var gridNumbers = solution.ConvertToArray();
+    private Grid GenerateGrid(int size, int?[,] gridNumbers) {
 
       grid = new Grid();
 
@@ -74,10 +66,35 @@ namespace Sudoku {
     }
 
     private void StartButtonClick(object sender, RoutedEventArgs e) {
+      DisableButtons(); 
+      gamePanel.Children.Clear();
+      int boardSize = 9;
+
+      PuzzleGenerator puzzle = new PuzzleGenerator((int)Math.Sqrt(boardSize));
+      puzzle.MakePartialSolution(Difficulty.Medium);
+
+      gamePanel.Children.Add(GenerateGrid(boardSize, puzzle.ConvertToArray()));
+    }
+
+    private void SolveButtonClick(object sender, RoutedEventArgs e) {
+      DisableButtons();
+      gamePanel.Children.Clear();
+
+      string filename = Microsoft.VisualBasic.Interaction.InputBox("Please enter the name of a file to solve:", "Puzzle", "test.txt", 0, 0);
+      PuzzleSolver solution = new PuzzleSolver();
+      solution.SolvePartialSolution(puzzlePath + filename);
+
+      int boardSize = 9;
+      gamePanel.Children.Add(GenerateGrid(boardSize, solution.ConvertToArray()));
+    }
+
+    private void DisableButtons()
+    {
       startButton.Visibility = Visibility.Hidden;
       startButton.IsEnabled = false;
-      gamePanel.Children.Clear();
-      gamePanel.Children.Add(GenerateGrid(9));
+      solveButton.Visibility = Visibility.Hidden;
+      solveButton.IsEnabled = false;
+
     }
 
     public void PanelClick(object sender, RoutedEventArgs e) {
