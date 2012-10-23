@@ -24,3 +24,16 @@ C:\Users\IBM_ADMIN\Desktop\chriszimmerman-Sudoku-7ab0b33\Sudoku\Sudoku\obj\Debug
 C:\Users\IBM_ADMIN\Desktop\chriszimmerman-Sudoku-7ab0b33\Sudoku\Sudoku\obj\Debug\Sudoku.g.resources
 C:\Users\IBM_ADMIN\Desktop\chriszimmerman-Sudoku-7ab0b33\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
 C:\Users\IBM_ADMIN\Desktop\chriszimmerman-Sudoku-7ab0b33\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\bin\Debug\Sudoku.exe.config
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.exe
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.pdb
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\bin\Debug\Sudoku.exe
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\bin\Debug\Sudoku.pdb
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.csprojResolveAssemblyReference.cache
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\MainWindow.baml
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\MainWindow.g.cs
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\App.g.cs
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku_MarkupCompile.cache
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.g.resources
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
+C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache

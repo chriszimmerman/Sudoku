@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -16,6 +17,7 @@ using System.Windows.Shapes;
 namespace Sudoku {
   public partial class MainWindow : Window {
     Grid grid;
+    const int squareSize = 30;
     string imagePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Images\\";
     string puzzlePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Puzzles\\";
 
@@ -28,8 +30,8 @@ namespace Sudoku {
 
       grid = new Grid();
 
-      grid.Height = size * 30;
-      grid.Width = size * 30;
+      grid.Height = size * squareSize;
+      grid.Width = size * squareSize;
 
       for (int cell = 0; cell < size; cell++) {
         grid.RowDefinitions.Add(new RowDefinition());
@@ -41,9 +43,9 @@ namespace Sudoku {
           var currentPosition = row * size + column;
 
           var panel = new SudokuPanel();
-          panel.Height = 30;
-          panel.Width = 30;
-          panel.Children.Add(new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = 30, Width = 30 });
+          panel.Height = squareSize;
+          panel.Width = squareSize;
+          panel.Children.Add(new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = squareSize, Width = squareSize });
           panel.MouseDown += PanelClick;
           panel.Row = row;
           panel.Column = column;
@@ -94,24 +96,66 @@ namespace Sudoku {
       startButton.IsEnabled = false;
       solveButton.Visibility = Visibility.Hidden;
       solveButton.IsEnabled = false;
+    }
 
+    public Popup MakeChoicesPopup() {
+      Grid choicesGrid = new Grid();
+      int blockHeight = 3;
+      int blockWidth = 3;
+
+      choicesGrid.Height = blockHeight * squareSize;
+      choicesGrid.Width = blockWidth * squareSize;
+
+      for (int cell = 0; cell < blockWidth; cell++)
+      {
+        choicesGrid.RowDefinitions.Add(new RowDefinition());
+        choicesGrid.ColumnDefinitions.Add(new ColumnDefinition());
+      }
+
+      choicesGrid.Height = 3 * squareSize;
+      choicesGrid.Width = 3 * squareSize;
+
+      for (int row = 0; row < blockHeight; row++)
+      {
+        for (int column = 0; column < blockWidth; column++)
+        {
+          var currentPosition = row * blockHeight + column;
+
+          var panel = new SudokuPanel();
+          panel.Height = squareSize;
+          panel.Width = squareSize;
+          panel.Children.Add(new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = blockHeight, Width = blockWidth });
+          panel.Row = row;
+          panel.Column = column;
+          panel.Number = currentPosition + 1;
+          panel.IsLocked = panel.Number != null;
+
+
+          var filename = imagePath + "sudoku_hard" + panel.Number.Value.ToString() + ".png";
+          var image = new BitmapImage(new Uri(filename, UriKind.Relative));
+          var imageBrush = new ImageBrush();
+          imageBrush.ImageSource = image;
+          panel.Background = imageBrush;
+
+          Grid.SetRow(panel, row);
+          Grid.SetColumn(panel, column);
+          choicesGrid.Children.Add(panel);
+        }
+      }
+
+      Popup popup = new Popup();
+      popup.Child = choicesGrid;
+      return popup;
     }
 
     public void PanelClick(object sender, RoutedEventArgs e) {
+      //TODO: make popup with child panel that has n * n child panels
       var newPanel = (SudokuPanel)sender;
 
       if (!newPanel.IsLocked) {
-        var filename2 = imagePath + "sudoku_soft9.png";
-        var image2 = new BitmapImage(new Uri(filename2, UriKind.Relative));
-        var imageBrush2 = new ImageBrush();
-        imageBrush2.ImageSource = image2;
-        newPanel.Background = imageBrush2;
-
-        var choicePanel = new StackPanel();
-        choicePanel.Height = 90;
-        choicePanel.Width = 90;
-        choicePanel.Background = imageBrush2;
-        
+        Popup popup = MakeChoicesPopup();
+        popup.Placement = PlacementMode.MousePoint;
+        popup.IsOpen = true;  
       }
     }
 
