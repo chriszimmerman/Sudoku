@@ -39,9 +39,9 @@ namespace Sudoku
 					break;
 			}
 			
-			Random random = new Random();
+			Random randomSeed = new Random();
 			var solutionSquares = new List<Square>(SquaresFiguredOut);
-			var squaresToClear = solutionSquares.OrderBy(x => random.Next()).Take(hintsToTakeAway);
+			var squaresToClear = solutionSquares.OrderBy(x => randomSeed.Next()).Take(hintsToTakeAway);
 			foreach(var square in squaresToClear){
 				square.Number = null;
 			}

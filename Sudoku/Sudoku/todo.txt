@@ -1,0 +1,9 @@
+﻿Handle infinite loops in puzzle solving
+Make parsing better + error handling
+Make GUI scale with size of board
+Darker borders to distinguish blocks better
+Better images for squares
+Improve solving algorithm
+Implement game loop / check for win condition
+Wire up selected choice square and update value on grid
+Menu key shortcuts

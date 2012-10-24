@@ -68,7 +68,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Difficulty.cs" />
-    <Compile Include="Driver.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -130,6 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Puzzles\test3.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Puzzles\smalltest1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

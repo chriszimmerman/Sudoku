@@ -16,55 +16,67 @@ using System.Windows.Shapes;
 
 namespace Sudoku {
   public partial class MainWindow : Window {
-    Grid grid;
     const int squareSize = 30;
     string imagePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Images\\";
     string puzzlePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Puzzles\\";
 
     public MainWindow() {
-      AddChild(grid);
       InitializeComponent();
     }
 
     private Grid GenerateGrid(int size, int?[,] gridNumbers) {
-
-      grid = new Grid();
+      var grid = new Grid();
 
       grid.Height = size * squareSize;
       grid.Width = size * squareSize;
 
-      for (int cell = 0; cell < size; cell++) {
-        grid.RowDefinitions.Add(new RowDefinition());
-        grid.ColumnDefinitions.Add(new ColumnDefinition());
-      }
+      CreateRowAndColumnDefinitions(grid, size);
 
       for (int row = 0; row < size; row++) {
         for (int column = 0; column < size; column++) {
           var currentPosition = row * size + column;
-
-          var panel = new SudokuPanel();
-          panel.Height = squareSize;
-          panel.Width = squareSize;
-          panel.Children.Add(new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = squareSize, Width = squareSize });
+          var panel = CreatePanel(row, column, gridNumbers[column, row]);      
           panel.MouseDown += PanelClick;
-          panel.Row = row;
-          panel.Column = column;
-          panel.Number = gridNumbers[column, row];
-          panel.IsLocked = panel.Number != null;
-
 
           var filename = imagePath + "sudoku_hard" + (panel.Number != null ? panel.Number.Value.ToString() : "_") + ".png";
-          var image = new BitmapImage(new Uri(filename, UriKind.Relative));
-          var imageBrush = new ImageBrush();
-          imageBrush.ImageSource = image;
-          panel.Background = imageBrush;
-
+          PutBackGroundOnPanel(panel, filename);
+          
           Grid.SetRow(panel, row);
           Grid.SetColumn(panel, column);
           grid.Children.Add(panel);
         }
       }
       return grid;
+    }
+
+    private static void CreateRowAndColumnDefinitions(Grid choicesGrid, int blockWidth) {
+      for (int rowAndColumnNumbers = 0; rowAndColumnNumbers < blockWidth; rowAndColumnNumbers++) {
+        choicesGrid.RowDefinitions.Add(new RowDefinition());
+        choicesGrid.ColumnDefinitions.Add(new ColumnDefinition());
+      }
+    }
+
+    private void PutBackGroundOnPanel(SudokuPanel panel, string filename) {
+      var image = new BitmapImage(new Uri(filename, UriKind.Relative));
+      var imageBrush = new ImageBrush();
+      imageBrush.ImageSource = image;
+      panel.Background = imageBrush;
+    }
+
+    private SudokuPanel CreatePanel(int row, int column, int? currentPosition) {
+      var panel = new SudokuPanel();
+      panel.Height = squareSize;
+      panel.Width = squareSize;
+      panel.Children.Add(MakeBorder());
+      panel.Row = row;
+      panel.Column = column;
+      panel.Number = currentPosition;
+      panel.IsLocked = panel.Number != null;
+      return panel;
+    }
+
+    private static Border MakeBorder() {
+      return new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = squareSize, Width = squareSize };
     }
 
     private void StartButtonClick(object sender, RoutedEventArgs e) {
@@ -90,12 +102,27 @@ namespace Sudoku {
       gamePanel.Children.Add(GenerateGrid(boardSize, solution.ConvertToArray()));
     }
 
-    private void DisableButtons()
-    {
+    private void DisableButtons() {
       startButton.Visibility = Visibility.Hidden;
       startButton.IsEnabled = false;
       solveButton.Visibility = Visibility.Hidden;
       solveButton.IsEnabled = false;
+    }
+
+    void popup_MouseLeave(object sender, MouseEventArgs e) {
+      var popup = (Popup)sender;
+      popup.IsOpen = false;
+    }
+
+    public void PanelClick(object sender, RoutedEventArgs e) {
+      var newPanel = (SudokuPanel)sender;
+
+      if (!newPanel.IsLocked) {
+        Popup popup = MakeChoicesPopup();
+        popup.Placement = PlacementMode.MousePoint;
+        popup.IsOpen = true;
+        popup.MouseLeave += popup_MouseLeave;
+      }
     }
 
     public Popup MakeChoicesPopup() {
@@ -106,36 +133,17 @@ namespace Sudoku {
       choicesGrid.Height = blockHeight * squareSize;
       choicesGrid.Width = blockWidth * squareSize;
 
-      for (int cell = 0; cell < blockWidth; cell++)
-      {
-        choicesGrid.RowDefinitions.Add(new RowDefinition());
-        choicesGrid.ColumnDefinitions.Add(new ColumnDefinition());
-      }
+      CreateRowAndColumnDefinitions(choicesGrid, blockWidth);
 
-      choicesGrid.Height = 3 * squareSize;
-      choicesGrid.Width = 3 * squareSize;
+      for (int row = 0; row < blockHeight; row++) {
+        for (int column = 0; column < blockWidth; column++) {
+          var currentPosition = row * blockHeight + column + 1;
 
-      for (int row = 0; row < blockHeight; row++)
-      {
-        for (int column = 0; column < blockWidth; column++)
-        {
-          var currentPosition = row * blockHeight + column;
+          var panel = CreatePanel(row, column, currentPosition);
+          var filename = imagePath + "sudoku_soft" + panel.Number.Value.ToString() + ".png";
+          PutBackGroundOnPanel(panel, filename);
 
-          var panel = new SudokuPanel();
-          panel.Height = squareSize;
-          panel.Width = squareSize;
-          panel.Children.Add(new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = blockHeight, Width = blockWidth });
-          panel.Row = row;
-          panel.Column = column;
-          panel.Number = currentPosition + 1;
-          panel.IsLocked = panel.Number != null;
-
-
-          var filename = imagePath + "sudoku_hard" + panel.Number.Value.ToString() + ".png";
-          var image = new BitmapImage(new Uri(filename, UriKind.Relative));
-          var imageBrush = new ImageBrush();
-          imageBrush.ImageSource = image;
-          panel.Background = imageBrush;
+          panel.MouseDown += ChoicePanelClick;
 
           Grid.SetRow(panel, row);
           Grid.SetColumn(panel, column);
@@ -148,15 +156,8 @@ namespace Sudoku {
       return popup;
     }
 
-    public void PanelClick(object sender, RoutedEventArgs e) {
-      //TODO: make popup with child panel that has n * n child panels
+    public void ChoicePanelClick(object sender, RoutedEventArgs e) {
       var newPanel = (SudokuPanel)sender;
-
-      if (!newPanel.IsLocked) {
-        Popup popup = MakeChoicesPopup();
-        popup.Placement = PlacementMode.MousePoint;
-        popup.IsOpen = true;  
-      }
     }
 
     public void Close(object sender, RoutedEventArgs e) {
