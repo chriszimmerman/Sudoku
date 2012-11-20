@@ -1,5 +1,0 @@
-C:\Users\Zimmy\documents\visual studio 2010\Projects\SudokuSolver\SudokuSolver\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Zimmy\documents\visual studio 2010\Projects\SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.exe
-C:\Users\Zimmy\documents\visual studio 2010\Projects\SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.pdb
-C:\Users\Zimmy\documents\visual studio 2010\Projects\SudokuSolver\SudokuSolver\obj\x86\Debug\SudokuSolver.exe
-C:\Users\Zimmy\documents\visual studio 2010\Projects\SudokuSolver\SudokuSolver\obj\x86\Debug\SudokuSolver.pdb
