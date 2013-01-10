@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("puzzles/hard16by16.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/sudoku_soft_.png")]
 
 

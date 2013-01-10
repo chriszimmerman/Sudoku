@@ -37,3 +37,16 @@ C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku_MarkupCompile.cache
 C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.g.resources
 C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
 C:\Users\IBM_ADMIN\Sudoku\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\Sudoku.exe.config
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.exe
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.pdb
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\Sudoku.exe
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\Sudoku.pdb
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.csprojResolveAssemblyReference.cache
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\MainWindow.baml
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\MainWindow.g.cs
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\App.g.cs
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku_MarkupCompile.cache
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.g.resources
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
