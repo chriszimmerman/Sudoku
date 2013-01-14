@@ -1,193 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Sudoku
-{
-    public partial class MainWindow : Window
-    {
-        const int squareSize = 30;
-        string imagePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Images\\";
-        string puzzlePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Puzzles\\";
+namespace Sudoku {
+    public partial class MainWindow : Window {
+        readonly string puzzlePath = System.IO.Directory.GetCurrentDirectory() + "..\\..\\..\\Puzzles\\";
 
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
         }
 
-        private Grid GenerateGrid(int size, int?[,] gridNumbers)
-        {
-            var grid = new Grid();
-
-            grid.Height = size * squareSize;
-            grid.Width = size * squareSize;
-
-            CreateRowAndColumnDefinitions(grid, size);
-
-            for (int row = 0; row < size; row++)
-            {
-                for (int column = 0; column < size; column++)
-                {
-                    var currentPosition = row * size + column;
-                    var panel = CreatePanel(row, column, gridNumbers[column, row]);
-                    panel.MouseDown += PanelClick;
-
-                    PutBackGroundOnPanel(panel);
-
-                    Grid.SetRow(panel, row);
-                    Grid.SetColumn(panel, column);
-                    grid.Children.Add(panel);
-                }
-            }
-            return grid;
-        }
-
-        private static void CreateRowAndColumnDefinitions(Grid choicesGrid, int blockWidth)
-        {
-            for (int rowAndColumnNumbers = 0; rowAndColumnNumbers < blockWidth; rowAndColumnNumbers++)
-            {
-                choicesGrid.RowDefinitions.Add(new RowDefinition());
-                choicesGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-        }
-
-        private void PutBackGroundOnPanel(SudokuPanel panel)
-        {
-            
-            var filename = imagePath + (panel.IsLocked ? "sudoku_hard" : "sudoku_soft") 
-                         + (panel.Number != null ? panel.Number.Value.ToString() : "_") + ".png";
-            var image = new BitmapImage(new Uri(filename, UriKind.Relative));
-            var imageBrush = new ImageBrush();
-            imageBrush.ImageSource = image;
-            panel.Background = imageBrush;
-        }
-
-        private SudokuPanel CreatePanel(int row, int column, int? currentPosition)
-        {
-            var panel = new SudokuPanel();
-            panel.Height = squareSize;
-            panel.Width = squareSize;
-            panel.Children.Add(MakeBorder());
-            panel.Row = row;
-            panel.Column = column;
-            panel.Number = currentPosition;
-            panel.IsLocked = panel.Number != null;
-            return panel;
-        }
-
-        private static Border MakeBorder()
-        {
-            return new Border { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black, Height = squareSize, Width = squareSize };
-        }
-
-        private void StartButtonClick(object sender, RoutedEventArgs e)
-        {
+        private void StartButtonClick(object sender, RoutedEventArgs e) {
             DisableButtons();
             gamePanel.Children.Clear();
-            int boardSize = 9;
+            const int boardSize = 9;
 
-            PuzzleGenerator puzzle = new PuzzleGenerator((int)Math.Sqrt(boardSize));
+            var puzzle = new PuzzleGenerator((int)Math.Sqrt(boardSize));
             puzzle.MakePartialSolution(Difficulty.Medium);
 
-            gamePanel.Children.Add(GenerateGrid(boardSize, puzzle.ConvertToArray()));
+            gamePanel.Children.Add(new SudokuGridView(boardSize, puzzle.ConvertToArray()));
         }
 
-        private void SolveButtonClick(object sender, RoutedEventArgs e)
-        {
+        private void SolveButtonClick(object sender, RoutedEventArgs e) {
             DisableButtons();
             gamePanel.Children.Clear();
 
             string filename = Microsoft.VisualBasic.Interaction.InputBox("Please enter the name of a file to solve:", "Puzzle", "test.txt", 0, 0);
-            PuzzleSolver solution = new PuzzleSolver();
+            var solution = new PuzzleSolver();
             solution.SolvePartialSolution(puzzlePath + filename);
 
-            int boardSize = 9;
-            gamePanel.Children.Add(GenerateGrid(boardSize, solution.ConvertToArray()));
+            const int boardSize = 9;
+            gamePanel.Children.Add(new SudokuGridView(boardSize, solution.ConvertToArray()));
         }
 
-        private void DisableButtons()
-        {
+        private void DisableButtons() {
             startButton.Visibility = Visibility.Hidden;
             startButton.IsEnabled = false;
             solveButton.Visibility = Visibility.Hidden;
             solveButton.IsEnabled = false;
         }
 
-        void popup_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var popup = (Popup)sender;
-            popup.IsOpen = false;
-        }
-
-        public void PanelClick(object sender, RoutedEventArgs e)
-        {
-            var panel = (SudokuPanel)sender;
-            if (!panel.IsLocked)
-            {
-                if (panel.Number == null)
-                {
-                    panel.Number = 1;
-                }
-                else
-                    panel.Number = (panel.Number % 9) + 1;
-
-                PutBackGroundOnPanel(panel);    
-            }
-        }
-
-        public Popup MakeChoicesPopup()
-        {
-            Grid choicesGrid = new Grid();
-            int blockHeight = 3;
-            int blockWidth = 3;
-
-            choicesGrid.Height = blockHeight * squareSize;
-            choicesGrid.Width = blockWidth * squareSize;
-
-            CreateRowAndColumnDefinitions(choicesGrid, blockWidth);
-
-            for (int row = 0; row < blockHeight; row++)
-            {
-                for (int column = 0; column < blockWidth; column++)
-                {
-                    var currentPosition = row * blockHeight + column + 1;
-
-                    var panel = CreatePanel(row, column, currentPosition);
-                    var filename = imagePath + "sudoku_soft" + panel.Number.Value.ToString() + ".png";
-                    PutBackGroundOnPanel(panel);
-
-                    panel.MouseDown += ChoicePanelClick;
-
-                    Grid.SetRow(panel, row);
-                    Grid.SetColumn(panel, column);
-                    choicesGrid.Children.Add(panel);
-                }
-            }
-
-            Popup popup = new Popup();
-            popup.Child = choicesGrid;
-            return popup;
-        }
-
-        public void ChoicePanelClick(object sender, RoutedEventArgs e)
-        {
-            var newPanel = (SudokuPanel)sender;
-        }
-
-        public void Close(object sender, RoutedEventArgs e)
-        {
+        public void Close(object sender, RoutedEventArgs e) {
             Environment.Exit(0);
         }
     }
