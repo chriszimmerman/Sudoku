@@ -21,13 +21,14 @@ namespace Sudoku {
     }
 
     protected void InitializeSquaresToTry() {
-      for (int row = 1; row <= gridLength; row++) {
-        for (int column = 1; column <= gridLength; column++) {
-          var newSquare = new Square();
-          newSquare.XCoordinate = column;
-          newSquare.YCoordinate = row;
-          newSquare.BlockNumber = GetBlockNumber(column, row);
-          newSquare.PossibleValues = new List<int>(PossibleValues);
+      for (var row = 1; row <= gridLength; row++) {
+        for (var column = 1; column <= gridLength; column++) {
+          var newSquare = new Square {
+                XCoordinate = column,
+                YCoordinate = row,
+                BlockNumber = GetBlockNumber(column, row),
+                PossibleValues = new List<int>(PossibleValues)
+          };
           SquaresToTry.Add(newSquare);
         }
       }
@@ -70,35 +71,29 @@ namespace Sudoku {
     }
 
     protected bool IsValidValueFoundForSquare(Square current) {
-      Random random = new Random();
-      int valueToTry;
+      var random = new Random();
 
-      while (current.PossibleValues.Count > 0) {
-        valueToTry = current.PossibleValues.OrderBy(x => random.Next()).Take(1).First();
-        current.Number = valueToTry;
-        current.PossibleValues.Remove(valueToTry);
+        while (current.PossibleValues.Count > 0) {
+            int valueToTry = current.PossibleValues.OrderBy(x => random.Next()).Take(1).First();
+            current.Number = valueToTry;
+            current.PossibleValues.Remove(valueToTry);
 
-        if (!DoesSquareInSameZoneShareValue(current)) {
-          return true;
+            if (!DoesSquareInSameZoneShareValue(current)) {
+                return true;
+            }
         }
-      }
       current.Number = null;
       return false;
     }
 
     protected virtual bool DoesSquareInSameZoneShareValue(Square current) {
-      foreach (var square in SquaresFiguredOut) {
-        if ((square.XCoordinate == current.XCoordinate
-          || square.YCoordinate == current.YCoordinate
-          || square.BlockNumber == current.BlockNumber)
-          && square.Number == current.Number) {
-          return true;
-        }
-      }
-      return false;
+        return SquaresFiguredOut.Any(square => 
+                                        (square.XCoordinate == current.XCoordinate 
+                                      || square.YCoordinate == current.YCoordinate
+                                      || square.BlockNumber == current.BlockNumber) && square.Number == current.Number);
     }
 
-    protected void RefreshPossibleValues() {
+      protected void RefreshPossibleValues() {
       foreach (var square in SquaresToTry) {
         RefreshSquare(square);
       }
@@ -116,7 +111,7 @@ namespace Sudoku {
     }
 
     public virtual int?[,] ConvertToArray() {
-      int?[,] grid = new int?[gridLength, gridLength];
+      var grid = new int?[gridLength, gridLength];
 
       foreach (var square in SquaresFiguredOut) {
         grid[square.XCoordinate - 1, square.YCoordinate - 1] = square.Number;
@@ -126,8 +121,8 @@ namespace Sudoku {
     }
 
     public void PrintGrid(int?[,] grid) {
-      for (int row = 0; row < gridLength; row++) {
-        for (int column = 0; column < gridLength; column++) {
+      for (var row = 0; row < gridLength; row++) {
+        for (var column = 0; column < gridLength; column++) {
           if (grid[column, row] != null)
             Console.Write(grid[column, row] + " ");
           else

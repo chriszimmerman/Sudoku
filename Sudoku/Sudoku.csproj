@@ -57,6 +57,7 @@
     <Compile Include="PuzzleGenerator.cs" />
     <Compile Include="PuzzleSolver.cs" />
     <Compile Include="Square.cs" />
+    <Compile Include="SudokuGridPresenter.cs" />
     <Compile Include="SudokuGridView.cs" />
     <Compile Include="SudokuPanel.cs" />
     <Compile Include="SudokuPuzzle.cs" />

@@ -9,6 +9,7 @@ using System.Windows.Controls;
 namespace Sudoku {
     public class SudokuGridView : Grid {
         private const int squareSize = 30;
+        private SudokuGridPresenter presenter;
 
         public SudokuGridView(int size, int?[,] gridNumbers) {
             Height = size * squareSize;
@@ -28,6 +29,7 @@ namespace Sudoku {
                     this.Children.Add(panel);
                 }
             }
+            presenter = new SudokuGridPresenter {SudokuGrid = gridNumbers};
         }
 
         private void CreateRowAndColumnDefinitions(int blockWidth) {
@@ -47,6 +49,10 @@ namespace Sudoku {
                 panel.Number = (panel.Number % 9) + 1;
 
             panel.PutBackGroundOnPanel();
+            presenter.UpdateGrid(panel);
+
+            //TODO: Check for win condition
+            //if(presenter.CheckForWinCondition())
         }
     }
 }

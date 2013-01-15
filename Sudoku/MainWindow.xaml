@@ -14,5 +14,6 @@
             </MenuItem>
         </Menu>
         <Button x:Name="solveButton" Content="Solve Puzzle" HorizontalAlignment="Left" Margin="150,411,0,0" VerticalAlignment="Top" Width="232" Height="50" FontSize="18" Click="SolveButtonClick"/>
+        <Label Name ="winLabel" Content="      You Win!!!" HorizontalAlignment="Left" Margin="113,25,0,0" VerticalAlignment="Top" Height="51" Width="306" FontSize="36" FontWeight="Bold" Visibility="Hidden"/>
     </Grid>
 </Window>
