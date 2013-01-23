@@ -5,13 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Sudoku {
-    public class SudokuGridView : Grid {
+    /// <summary>
+    /// Interaction logic for SudokuPuzzleView.xaml
+    /// </summary>
+    public partial class SudokuPuzzleView : UserControl {
         private const int squareSize = 30;
         private SudokuGridPresenter presenter;
 
-        public SudokuGridView(int size, int?[,] gridNumbers) {
+        public SudokuPuzzleView(int size, int?[,] gridNumbers) {
+            InitializeComponent();
             Height = size * squareSize;
             Width = size * squareSize;
 
@@ -24,9 +35,9 @@ namespace Sudoku {
 
                     panel.PutBackGroundOnPanel();
 
-                    SetRow(panel, row);
-                    SetColumn(panel, column);
-                    this.Children.Add(panel);
+                    Grid.SetRow(panel, row);
+                    Grid.SetColumn(panel, column);
+                    SudokuGrid.Children.Add(panel);
                 }
             }
             presenter = new SudokuGridPresenter {SudokuGrid = gridNumbers};
@@ -34,8 +45,8 @@ namespace Sudoku {
 
         private void CreateRowAndColumnDefinitions(int blockWidth) {
             for (int rowAndColumnNumbers = 0; rowAndColumnNumbers < blockWidth; rowAndColumnNumbers++) {
-                RowDefinitions.Add(new RowDefinition());
-                ColumnDefinitions.Add(new ColumnDefinition());
+                SudokuGrid.RowDefinitions.Add(new RowDefinition{Height = new GridLength(squareSize)});
+                SudokuGrid.ColumnDefinitions.Add(new ColumnDefinition{Width = new GridLength(squareSize)});
             }
         }
 

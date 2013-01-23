@@ -50,3 +50,5 @@ C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku_MarkupCompile.cache
 C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.g.resources
 C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
 C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\SudokuPuzzleView.baml
+C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\SudokuPuzzleView.g.cs

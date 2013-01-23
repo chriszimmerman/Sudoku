@@ -11,33 +11,24 @@ namespace Sudoku {
         }
 
         private void StartButtonClick(object sender, RoutedEventArgs e) {
-            DisableButtons();
-            gamePanel.Children.Clear();
+            MainGrid.Children.Clear();
             const int boardSize = 9;
 
             var puzzle = new PuzzleGenerator((int)Math.Sqrt(boardSize));
             puzzle.MakePartialSolution(Difficulty.Medium);
 
-            gamePanel.Children.Add(new SudokuGridView(boardSize, puzzle.ConvertToArray()));
+            MainGrid.Children.Add(new SudokuPuzzleView(boardSize, puzzle.ConvertToArray()));
         }
 
         private void SolveButtonClick(object sender, RoutedEventArgs e) {
-            DisableButtons();
-            gamePanel.Children.Clear();
+            MainGrid.Children.Clear();
 
             string filename = Microsoft.VisualBasic.Interaction.InputBox("Please enter the name of a file to solve:", "Puzzle", "test.txt", 0, 0);
             var solution = new PuzzleSolver();
             solution.SolvePartialSolution(puzzlePath + filename);
 
             const int boardSize = 9;
-            gamePanel.Children.Add(new SudokuGridView(boardSize, solution.ConvertToArray()));
-        }
-
-        private void DisableButtons() {
-            startButton.Visibility = Visibility.Hidden;
-            startButton.IsEnabled = false;
-            solveButton.Visibility = Visibility.Hidden;
-            solveButton.IsEnabled = false;
+            MainGrid.Children.Add(new SudokuPuzzleView(boardSize, solution.ConvertToArray()));
         }
 
         public void Close(object sender, RoutedEventArgs e) {

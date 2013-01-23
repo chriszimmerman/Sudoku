@@ -58,9 +58,11 @@
     <Compile Include="PuzzleSolver.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="SudokuGridPresenter.cs" />
-    <Compile Include="SudokuGridView.cs" />
     <Compile Include="SudokuPanel.cs" />
     <Compile Include="SudokuPuzzle.cs" />
+    <Compile Include="SudokuPuzzleView.xaml.cs">
+      <DependentUpon>SudokuPuzzleView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SudokuPuzzleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
