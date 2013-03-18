@@ -20,33 +20,38 @@ namespace Sudoku {
     public partial class SudokuPuzzleView : UserControl {
         private const int squareSize = 30;
         private SudokuGridPresenter presenter;
+        private int?[,] boardAs2DArray;
+        private List<Square> board; 
 
-        public SudokuPuzzleView(int size, int?[,] gridNumbers) {
+        public SudokuPuzzleView() {
+            int size = 9;
             InitializeComponent();
-            Height = size * squareSize;
-            Width = size * squareSize;
 
+            var puzzle = new PuzzleGenerator((int)Math.Sqrt(size));
+            board = puzzle.MakePartialSolution(Difficulty.Medium);
+            boardAs2DArray = puzzle.PartialSolutionAs2DArray;
+            
             CreateRowAndColumnDefinitions(size);
 
             for (var row = 0; row < size; row++) {
                 for (var column = 0; column < size; column++) {
-                    var panel = new SudokuPanel(row, column, gridNumbers[column, row], squareSize, squareSize);
+                    var panel = new SudokuPanel(row, column, boardAs2DArray[column, row], squareSize, squareSize);
                     panel.MouseDown += PanelClick;
 
                     panel.PutBackGroundOnPanel();
 
+                    this.SudokuGrid.Children.Add(panel);
                     Grid.SetRow(panel, row);
                     Grid.SetColumn(panel, column);
-                    SudokuGrid.Children.Add(panel);
                 }
             }
-            presenter = new SudokuGridPresenter {SudokuGrid = gridNumbers};
+            presenter = new SudokuGridPresenter { SudokuGrid = boardAs2DArray, SudokuGridSquares = board, View = this };
         }
 
         private void CreateRowAndColumnDefinitions(int blockWidth) {
             for (int rowAndColumnNumbers = 0; rowAndColumnNumbers < blockWidth; rowAndColumnNumbers++) {
-                SudokuGrid.RowDefinitions.Add(new RowDefinition{Height = new GridLength(squareSize)});
-                SudokuGrid.ColumnDefinitions.Add(new ColumnDefinition{Width = new GridLength(squareSize)});
+                this.SudokuGrid.RowDefinitions.Add(new RowDefinition{Height = new GridLength(squareSize)});
+                this.SudokuGrid.ColumnDefinitions.Add(new ColumnDefinition{Width = new GridLength(squareSize)});
             }
         }
 
@@ -61,9 +66,6 @@ namespace Sudoku {
 
             panel.PutBackGroundOnPanel();
             presenter.UpdateGrid(panel);
-
-            //TODO: Check for win condition
-            //if(presenter.CheckForWinCondition())
         }
     }
 }

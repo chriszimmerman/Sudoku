@@ -1,13 +1,21 @@
-﻿<Window x:Class="Sudoku.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Sudoku" Height="525" Width="525">
-    <Grid Name="MainGrid">
-        <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="517">
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Sudoku.MainWindow"
+        Title="Sudoku" Height="420" Width="400">
+    <Grid x:Name="MainGrid" Height="400" Width="400" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row ="0" Grid.Column="0" Name="SudokuMenu" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Width="400">
             <MenuItem Header="Game">
-                <MenuItem Header="New" HorizontalAlignment="Left" Width="200" Click="StartButtonClick"/>
+                <MenuItem Header="New" HorizontalAlignment="Left" Width="200" InputGestureText="Ctrl+N" Click="StartButtonClick"/>
                 <MenuItem Header="Solve" HorizontalAlignment="Left" Width="200" Click="SolveButtonClick"/>
-                <MenuItem Header="Exit" HorizontalAlignment="Left" Width="145" InputGestureText="Alt+F4" Click="Close"/>
+                <MenuItem Header="Exit" HorizontalAlignment="Left" Width="200" InputGestureText="Alt+F4" Click="Close"/>
             </MenuItem>
         </Menu>
     </Grid>

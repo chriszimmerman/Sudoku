@@ -52,3 +52,7 @@ C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
 C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
 C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\SudokuPuzzleView.baml
 C:\Users\thegr_000\Sudoku\Sudoku\obj\Debug\SudokuPuzzleView.g.cs
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\Rhino.Mocks.dll
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\Rhino.Mocks.xml
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\nunit.framework.dll
+C:\Users\thegr_000\Sudoku\Sudoku\bin\Debug\nunit.framework.xml

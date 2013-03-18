@@ -22,8 +22,8 @@ namespace Sudoku {
 
       var digits = ParseFile(filename);
       int length = (int)Math.Sqrt(digits.Count);
-      this.gridLength = length;
-      this.gridLengthSqrt = (int)Math.Sqrt(this.gridLength);
+      this.GridLength = length;
+      this.GridLengthSqrt = (int)Math.Sqrt(this.GridLength);
       GeneratePossibleValues(length);
 
       for (int row = 1; row <= length; row++) {

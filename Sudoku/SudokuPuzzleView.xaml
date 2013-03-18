@@ -3,10 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="525" d:DesignWidth="525" Width="525" Height="525">
-    <Grid Height="525" Width="525">
-        <Label Name ="WinLabel" Content="      You Win!!!" HorizontalAlignment="Left" Margin="113,25,0,0" VerticalAlignment="Top" Height="51" Width="306" FontSize="36" FontWeight="Bold" Visibility="Hidden"/>
-        <Grid Name="SudokuGrid" HorizontalAlignment="Left" VerticalAlignment="Center" Height="525" Width="525"/>
+             mc:Ignorable="d" d:DesignWidth="400" Width="400" Height="400"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Top"
+             >
+    <Grid Height ="400" Width="400" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="Auto"></RowDefinition>
+            <RowDefinition Height ="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name ="WinLabel" Grid.Row ="0" Content="You Win!!!" FontSize="36" FontWeight="Bold" Visibility="Hidden" Width="194" Height="50"/>
+        <Grid Grid.Row="1" Height ="300" Width="300" x:Name="SudokuGrid" VerticalAlignment="Top" HorizontalAlignment="Center"/>
     </Grid>
+        
 </UserControl>

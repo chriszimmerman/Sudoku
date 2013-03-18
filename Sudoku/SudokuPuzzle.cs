@@ -5,24 +5,22 @@ using System.IO;
 
 namespace Sudoku {
   public abstract class SudokuPuzzle {
-    protected int gridLength;
-    protected int gridLengthSqrt;
+    protected int GridLength;
+    protected int GridLengthSqrt;
     protected List<int> PossibleValues;
     protected List<Square> SquaresToTry;
     protected Stack<Square> SquaresFiguredOut;
     protected Stack<Square> BacktrackStack;
 
-    public SudokuPuzzle() { }
-
-    protected void GeneratePossibleValues(int maxNumber) {
+      protected void GeneratePossibleValues(int maxNumber) {
       for (int i = 1; i <= maxNumber; i++) {
         PossibleValues.Add(i);
       }
     }
 
     protected void InitializeSquaresToTry() {
-      for (var row = 1; row <= gridLength; row++) {
-        for (var column = 1; column <= gridLength; column++) {
+      for (var row = 1; row <= GridLength; row++) {
+        for (var column = 1; column <= GridLength; column++) {
           var newSquare = new Square {
                 XCoordinate = column,
                 YCoordinate = row,
@@ -35,8 +33,8 @@ namespace Sudoku {
     }
 
     protected int GetBlockNumber(int column, int row) {
-      return ((int)Math.Floor((double)(row - 1) / (double)(gridLengthSqrt)) * gridLengthSqrt)
-            + (int)Math.Ceiling((double)column / (double)(gridLengthSqrt));
+      return ((int)Math.Floor((double)(row - 1) / (double)(GridLengthSqrt)) * GridLengthSqrt)
+            + (int)Math.Ceiling((double)column / (double)(GridLengthSqrt));
     }
 
     protected void Enumerate() {
@@ -111,7 +109,7 @@ namespace Sudoku {
     }
 
     public virtual int?[,] ConvertToArray() {
-      var grid = new int?[gridLength, gridLength];
+      var grid = new int?[GridLength, GridLength];
 
       foreach (var square in SquaresFiguredOut) {
         grid[square.XCoordinate - 1, square.YCoordinate - 1] = square.Number;
@@ -121,8 +119,8 @@ namespace Sudoku {
     }
 
     public void PrintGrid(int?[,] grid) {
-      for (var row = 0; row < gridLength; row++) {
-        for (var column = 0; column < gridLength; column++) {
+      for (var row = 0; row < GridLength; row++) {
+        for (var column = 0; column < GridLength; column++) {
           if (grid[column, row] != null)
             Console.Write(grid[column, row] + " ");
           else

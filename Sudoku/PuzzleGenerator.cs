@@ -4,22 +4,25 @@ using System.Linq;
 
 namespace Sudoku {
     public class PuzzleGenerator : SudokuPuzzle {
+
+        public int?[,] PartialSolutionAs2DArray { get; set; }
+
         public PuzzleGenerator(int gridLengthSqrt = 3) {
-            this.gridLengthSqrt = gridLengthSqrt;
-            this.gridLength = gridLengthSqrt * gridLengthSqrt;
+            this.GridLengthSqrt = gridLengthSqrt;
+            this.GridLength = gridLengthSqrt * gridLengthSqrt;
             this.SquaresToTry = new List<Square>();
             this.SquaresFiguredOut = new Stack<Square>();
             this.BacktrackStack = new Stack<Square>();
             this.PossibleValues = new List<int>();
 
-            GeneratePossibleValues(this.gridLength);
+            GeneratePossibleValues(this.GridLength);
             InitializeSquaresToTry();
             Enumerate();
         }
 
-        public int?[,] MakePartialSolution(Difficulty difficulty) {
+        public List<Square> MakePartialSolution(Difficulty difficulty) {
             int hintsToTakeAway;
-            int totalSquares = gridLength * gridLength;
+            int totalSquares = GridLength * GridLength;
 
             switch (difficulty) {
                 case Difficulty.Easy:
@@ -43,13 +46,15 @@ namespace Sudoku {
                 square.Number = null;
             }
 
-            int?[,] partialSolution = new int?[gridLength, gridLength];
+            int?[,] partialSolution = new int?[GridLength, GridLength];
             foreach (var square in solutionSquares) {
                 if (square.Number != null)
                     partialSolution[square.XCoordinate - 1, square.YCoordinate - 1] = square.Number;
             }
 
-            return partialSolution;
+            PartialSolutionAs2DArray = partialSolution;
+
+            return solutionSquares;
         }
     }
 }

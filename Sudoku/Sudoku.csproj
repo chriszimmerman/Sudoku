@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\CSharpRefs\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -58,6 +62,7 @@
     <Compile Include="PuzzleSolver.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="SudokuGridPresenter.cs" />
+    <Compile Include="SudokuGridPresenterTest.cs" />
     <Compile Include="SudokuPanel.cs" />
     <Compile Include="SudokuPuzzle.cs" />
     <Compile Include="SudokuPuzzleView.xaml.cs">

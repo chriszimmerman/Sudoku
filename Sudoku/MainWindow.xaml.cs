@@ -12,12 +12,13 @@ namespace Sudoku {
 
         private void StartButtonClick(object sender, RoutedEventArgs e) {
             MainGrid.Children.Clear();
-            const int boardSize = 9;
-
-            var puzzle = new PuzzleGenerator((int)Math.Sqrt(boardSize));
-            puzzle.MakePartialSolution(Difficulty.Medium);
-
-            MainGrid.Children.Add(new SudokuPuzzleView(boardSize, puzzle.ConvertToArray()));
+            MainGrid.Children.Add(SudokuMenu);
+            Grid.SetRow(SudokuMenu,0);
+            Grid.SetColumn(SudokuMenu,0);
+            var puzzle = new SudokuPuzzleView();
+            MainGrid.Children.Add(puzzle);
+            Grid.SetRow(puzzle, 1);
+            Grid.SetColumn(puzzle,0);
         }
 
         private void SolveButtonClick(object sender, RoutedEventArgs e) {
@@ -27,8 +28,7 @@ namespace Sudoku {
             var solution = new PuzzleSolver();
             solution.SolvePartialSolution(puzzlePath + filename);
 
-            const int boardSize = 9;
-            MainGrid.Children.Add(new SudokuPuzzleView(boardSize, solution.ConvertToArray()));
+            MainGrid.Children.Add(new SudokuPuzzleView());
         }
 
         public void Close(object sender, RoutedEventArgs e) {
