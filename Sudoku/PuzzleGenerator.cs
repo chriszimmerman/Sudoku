@@ -26,13 +26,13 @@ namespace Sudoku {
 
             switch (difficulty) {
                 case Difficulty.Easy:
-                    hintsToTakeAway = totalSquares / 2;
+                    hintsToTakeAway = totalSquares / 4;
                     break;
                 case Difficulty.Medium:
                     hintsToTakeAway = totalSquares / 3;
                     break;
                 case Difficulty.Hard:
-                    hintsToTakeAway = totalSquares / 4;
+                    hintsToTakeAway = totalSquares / 2;
                     break;
                 default:
                     hintsToTakeAway = 0;

@@ -28,7 +28,7 @@ namespace Sudoku {
             InitializeComponent();
 
             var puzzle = new PuzzleGenerator((int)Math.Sqrt(size));
-            board = puzzle.MakePartialSolution(Difficulty.Medium);
+            board = puzzle.MakePartialSolution(Difficulty.Hard);
             boardAs2DArray = puzzle.PartialSolutionAs2DArray;
             
             CreateRowAndColumnDefinitions(size);
