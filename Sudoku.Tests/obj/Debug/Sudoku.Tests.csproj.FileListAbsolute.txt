@@ -1,0 +1,10 @@
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\obj\Debug\Sudoku.Tests.csprojResolveAssemblyReference.cache
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\Sudoku.Tests.exe.config
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\Sudoku.Tests.exe
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\Sudoku.Tests.pdb
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\nunit.framework.dll
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\Rhino.Mocks.dll
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\nunit.framework.xml
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\bin\Debug\Rhino.Mocks.xml
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\obj\Debug\Sudoku.Tests.exe
+C:\Users\thegr_000\Sudoku\Sudoku.Tests\obj\Debug\Sudoku.Tests.pdb

@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Sudoku {
-    public class SudokuPanel : StackPanel {
+    public class SudokuPanel : Panel {
         public bool IsLocked { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }

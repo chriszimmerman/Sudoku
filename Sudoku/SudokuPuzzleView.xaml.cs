@@ -36,8 +36,8 @@ namespace Sudoku {
             for (var row = 0; row < size; row++) {
                 for (var column = 0; column < size; column++) {
                     var panel = new SudokuPanel(row, column, boardAs2DArray[column, row], squareSize, squareSize);
-                    panel.MouseDown += PanelClick;
 
+                    panel.MouseDown += PanelClick;
                     panel.PutBackGroundOnPanel();
 
                     this.SudokuGrid.Children.Add(panel);
